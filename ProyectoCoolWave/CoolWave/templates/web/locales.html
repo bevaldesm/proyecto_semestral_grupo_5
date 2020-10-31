@@ -1,0 +1,27 @@
+{% extends "web/plantilla.html" %}
+{% load static %}
+
+{% block estilos %}
+    <link rel="stylesheet" href="{% static 'estilo/estilo_locales.css' %}">
+{% endblock estilos %}
+    
+{% block contenido %}
+    <div class="contenido">
+        <div class="mapa">
+            <h2>Mapa Local Providencia</h2>
+            <iframe class="mapaweb" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1664.6084847754132!2d-70.63310344172177!3d-33.44365335708224!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9662c5786d3c1fb7%3A0x4fcf6b9b60d580ad!2sGral%20Bustamante%20201%2C%20Providencia%2C%20Regi%C3%B3n%20Metropolitana!5e0!3m2!1ses-419!2scl!4v1600354086720!5m2!1ses-419!2scl" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+        </div>
+        <div class="informacion">
+            <h2>Información</h2>
+            <h3><i class="fas fa-map-marker-alt"></i>Dirección</h3>
+            <li>Gral Bustamante 201, Proviencia, Santiago</li>
+            <h3><i class="fas fa-phone"></i>Telefóno</h3>
+            <li>(2)234588962</li>
+            <h3><i class="fab fa-whatsapp"></i>Whatsapp</h3>
+            <li>(+56)966677998</li>
+            <h3><i class="far fa-envelope"></i>Correo de Contacto</h3>
+            <li>infocontact@coolwave.cl</li>
+        </div>
+    </div>
+{% endblock contenido %} 
+    

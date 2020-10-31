@@ -1,0 +1,35 @@
+{% extends "web/plantilla.html" %}
+{% load static %}
+
+{% block estilos %}
+    <link rel="stylesheet" href="{% static 'estilo/estilo_reserva.css' %}">
+{% endblock estilos %}
+    
+{% block contenido %}
+    <div class="contenido">
+        <h1>Reserva en línea</h1>
+        <form action="" method="post" class="formulario-registro" onsubmit="return validarTodo()">
+            <h2 class="formulario-titulo">Ingrese su información</h2>
+            <div class="contenedor-input">
+                <input class="col-30" type="text" minlength="9" maxlength="10" name="txtRut" placeholder="Ingrese Rut" required>
+                <input class="col-30" type="text" minlength="3" maxlength="80" name="txtNombre" placeholder="Ingrese Nombres" required>
+                <input class="col-30" type="text" minlength="3" maxlength="80" name="txtApellido" placeholder="Ingrese Apellidos" required>
+                <input class="col-100" type="email" name="txtCorreo" placeholder="Ingrese Correo" required>
+                <input class="col-100" type="number" name="txtFono" placeholder="Ingrese Teléfono" required>
+                <tr>
+                    <td>    
+                        <h3>Seleccione Fecha:</h3><input class="col-50" type="date" name="txtFecha" required>
+                    </td>
+                </tr>
+                <tr>
+                    <td>    
+                        <h3>Seleccione Hora:</h3><input class="col-60" type="time" name="txtHora" required>
+                    </td>
+                </tr>
+
+                <input type="submit" value="Reservar" class="btn-reserva">
+                <input type="reset" value="Limpiar" class="btn-limpiar">
+            </div>
+        </form>
+    </div>
+{% endblock contenido %}    
