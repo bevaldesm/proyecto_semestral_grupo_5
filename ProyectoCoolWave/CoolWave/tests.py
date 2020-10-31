@@ -51,7 +51,7 @@ class testTres(unittest.TestCase):
             u.save()
             valor = 1
         except:
-            calor = 0
+            valor = 0
         self.assertIn(valor,1)
     
 if __name__ == "__main__":
