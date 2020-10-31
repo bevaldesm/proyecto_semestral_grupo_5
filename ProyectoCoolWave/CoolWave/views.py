@@ -34,22 +34,26 @@ def registro(request):
         usuario = request.POST.get("txtUsuario")
 
         if pass1!=pass2:
-            return render(request,'web/formulario_registro.html',{'msg':'contrasenias incorrectas'})
+            return render(request,'web/formulario_registro.html',{'msg':'Las contraseñas no coinciden'})
 
         try:
             usu = User.objects.get(username=usuario)
-            return render(request,'web/formulario_registro.html',{'msg':'usuario existente'})
+            return render(request,'web/formulario_registro.html',{'msg':'Nombre Usuario Existe'})
         except:
-            usu = User()
-            usu.first_name = nombre
-            usu.last_name = apellido
-            usu.email = email
-            usu.set_password(pass1)
-            usu.username = usuario
-            usu.save()
+            try:
+                usu = User.objects.get(email=email)
+                return render(request,'web/formulario_registro.html',{'msg':'Correo ya registrado'})
+            except:
+                usu = User()
+                usu.first_name = nombre
+                usu.last_name = apellido
+                usu.email = email
+                usu.set_password(pass1)
+                usu.username = usuario
+                usu.save()
 
-            us = authenticate(request, username=usuario, password=pass1)
-            login_aut(request,us)
+                us = authenticate(request, username=usuario, password=pass1)
+                login_aut(request,us)
 
             autos = SliderIndex.objects.all()
             return render(request,'web/index.html',{'autos':autos})
@@ -91,9 +95,9 @@ def modificar(request):
             insumo.descripcion = descripcion
             insumo.stock = stock
             insumo.save()
-            msg='Modifico'
+            msg='Modificación Realizada'
         except:
-            msg='No Modifico'
+            msg='Modificación Cancelada'
 
     insumos = Insumos.objects.all()
     return render(request,'web/admin_productos.html',{'lista_insumos':insumos,'msg':msg})
@@ -107,7 +111,7 @@ def busqueda_mod(request,id):
         insumo = Insumos.objects.get(nombre=id)
         return render(request,'web/productos_mod.html',{'insumo':insumo})
     except:
-        msg='Mo Ubico el insumo'
+        msg='No encontró el insumo'
     insumos = Insumos.objects.all()
     return render(request,'web/admin_productos.html',{'lista_insumos':insumos,'msg':msg})
 
@@ -117,9 +121,9 @@ def eliminar(request,id):
     try:
         insumo = Insumos.objects.get(nombre=id)
         insumo.delete()
-        msg='Elimino Insumo'
+        msg='Insumo Eliminado'
     except:
-        msg='Mo Elimino Insumo'
+        msg='Insumo no eliminado'
     insumos = Insumos.objects.all()
     return render(request,'web/admin_productos.html',{'lista_insumos':insumos,'msg':msg})
 
@@ -144,5 +148,5 @@ def producto(request):
             stock=stock
         )
         insumo.save()
-        return render(request,'web/productos.html',{'msg':'grabo insumo'})
+        return render(request,'web/productos.html',{'msg':'Insumo Almacenado'})
     return render(request,'web/productos.html')

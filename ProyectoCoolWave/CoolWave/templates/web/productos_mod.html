@@ -20,7 +20,7 @@
                 <input class="col-30" minlength="3" maxlength="120" type="text" name="txtNombreP" placeholder="Ingrese Nombre Producto" value="{{insumo.nombre}}" required>
                 <input class="col-30" min="1" type="number" name="txtPrecio" placeholder="Ingrese Precio" value="{{insumo.precio}}" required >
                 <input class="col-50" minlength="3" maxlength="200" type="text" name="txtDescripcion" placeholder="Ingrese Descripción" value="{{insumo.descripcion}}">
-                <input class="col-30" type="text" name="txtStock" placeholder="Ingrese stock" value="{{insumo.stock}}">
+                <input class="col-30" min="0" type="number" name="txtStock" placeholder="Ingrese stock" value="{{insumo.stock}}">
 
                 <input type="submit" value="Modificar" class="btn-enviar">
                 <input type="button" onclick="ir()" value="Admin Insumo" class="btn-limpiar">
