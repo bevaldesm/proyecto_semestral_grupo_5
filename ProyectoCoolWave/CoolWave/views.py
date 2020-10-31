@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import SliderIndex,MisionVision, Insumos
+from .models import SliderIndex,MisionVision, Insumos, Imggal
 
 
 from django.contrib.auth.models import User
@@ -14,7 +14,8 @@ def reserva(request):
     return render(request,'web/reserva.html')
 
 def galeria(request):
-    return render(request,'web/galeria_imagenes.html')
+    resultsdisplay=Imggal.objects.all()
+    return render(request,'web/galeria_imagenes.html',{'Imggal':resultsdisplay})
 
 def quienes(request):
     mv= MisionVision.objects.all()

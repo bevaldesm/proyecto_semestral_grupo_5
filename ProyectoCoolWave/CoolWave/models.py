@@ -25,3 +25,8 @@ class Insumos(models.Model):
  
     def __str__(self):
         return self.nombre
+
+class Imggal(models.Model):
+    id = models.CharField(max_length=15,primary_key=True)
+    imgtitle = models.CharField(max_length=100)
+    image = models.ImageField(upload_to='images/')
